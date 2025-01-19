@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
+import com.juegos.creador_gui_automatico.BotonEditable;
 //import com.juegos.creador_gui_automatico.*;
 import com.juegos.creador_gui_automatico.k.*;
 
@@ -23,7 +24,7 @@ public class CreateFileDir {
   int r,g,b = 238;
   String filepath;
   BloqueTexto bloqueTexto = new BloqueTexto();
-  ArrayList<JButton> botones = new ArrayList<JButton>();
+  ArrayList<BotonEditable> botones = new ArrayList<BotonEditable>();
 
   public CreateFileDir(String filepath){
     this.filepath = filepath;
@@ -49,7 +50,7 @@ public class CreateFileDir {
     this.b = b;
   }//fin de metodo setColor
 
-  public void setBotones(ArrayList<JButton> b){
+  public void setBotones(ArrayList<BotonEditable> b){
     this.botones = b;
   }//fin de metoodo setBotones
 

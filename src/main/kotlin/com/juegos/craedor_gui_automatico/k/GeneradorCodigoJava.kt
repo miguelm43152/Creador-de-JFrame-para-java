@@ -1,6 +1,7 @@
 package com.juegos.creador_gui_automatico.k;
 import javax.swing.JButton;
 import java.util.ArrayList;
+import com.juegos.creador_gui_automatico.BotonEditable;
 class BloqueTexto{
     var title:String?=null;
     var anchoFrame:Int?=null;
@@ -11,7 +12,7 @@ class BloqueTexto{
     var g:Int?=null;
     var b:Int?=null;
     var mensaje:String?=null;
-    var botones:ArrayList<JButton> = ArrayList<JButton>()
+    var botones:ArrayList<BotonEditable> = ArrayList<BotonEditable>()
         set(value) {
                 // Puedes agregar lógica personalizada aquí, por ejemplo:
                 field = value
@@ -22,12 +23,12 @@ class BloqueTexto{
         var declaracion:String = "\n\t";
         var dimensiones:String = "\n\t\t";
         for(i in botones){
-                declaracion+= "JButton ${i.getText()} = new JButton(\"${i.getText()}\");\n\t";
+                declaracion+= "JButton ${i.getNombre()} = new JButton(\"${i.getText()}\");\n\t";
         }
         for(i in botones){
-                dimensiones+="""${i.getText()}.setSize(${i.getWidth()},${i.getHeight()});
-                ${i.getText()}.setLocation(${i.getX()},${i.getY()});
-                add(${i.getText()});
+                dimensiones+="""${i.getNombre()}.setSize(${i.getWidth()},${i.getHeight()});
+                ${i.getNombre()}.setLocation(${i.getX()},${i.getY()});
+                add(${i.getNombre()});
 
                 """
         }
@@ -54,7 +55,9 @@ public class ${title} extends JFrame {
         setLocation(this.x, this.y);
         setTitle("${title}");
         getContentPane().setBackground(new Color(r,g,b));
+        setVisible(true);
         agregarBotones();
+        
 	}//fin del constructor
 """+"""
         public void agregarBotones(){

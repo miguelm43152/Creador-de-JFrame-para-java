@@ -2,6 +2,9 @@ package com.juegos.creador_gui_automatico.Frames;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import com.juegos.creador_gui_automatico.Paneles.*;
 
 import javax.swing.*;
 
@@ -21,7 +24,8 @@ public class CrearJFrames extends JFrame{
     JPanel panelDecoracion;
     JPanel panelBounds;
     JButton alternarPaneles;
-    JPanel panelComponentes;
+    public JPanel panelComponentes;
+    public ConfiguracionJButton panelConfiguracionJButton;
     public JButton agregarBoton = new JButton("Agregar boton");
 
     /*
@@ -36,6 +40,9 @@ public class CrearJFrames extends JFrame{
         panelDecoracion();
         panelComponentes();
 
+        //panelComponentes.addMouseListener(new PosicionMouse());
+        panelConfiguracionJButton.addMouseListener(new PosicionMouse());
+
         alternarPaneles = new JButton("Agregar componentes");
         alternarPaneles.setSize(200,25);
         alternarPaneles.setLocation(25,325);
@@ -46,6 +53,32 @@ public class CrearJFrames extends JFrame{
         guardarFrame.setLocation((anchoFrame-150)/2,500);
         add(this.guardarFrame);
     }//fin de metodo constructor clase CrearJFrames
+
+    public class PosicionMouse implements MouseListener {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            System.out.println("x: " + e.getX() + ", Y: " + e.getY() );
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+        }
+    
+        
+    }//fin de clase PosicionMouse
 
     public class AlternarPaneles implements ActionListener{
         boolean estado = true;
@@ -83,6 +116,8 @@ public class CrearJFrames extends JFrame{
         agregarBoton.setSize(150,50);
         agregarBoton.setLocation(20,10);
         panelComponentes.add(agregarBoton);
+        panelConfiguracionJButton = new ConfiguracionJButton();
+        panelComponentes.add(panelConfiguracionJButton);
     }//fin de metodo panelComponentes
 
     public void panelBounds(){
@@ -105,7 +140,7 @@ public class CrearJFrames extends JFrame{
         panelBoundsLabels[1].setLocation(20,80);
 
         for(int i = 0 ; i < setSizeJSpinners.length ; i++){
-            setSizeJSpinners[i] = new JSpinner(new SpinnerNumberModel(480+i*160, 0, 5000, 10));// value, min, max, step
+            setSizeJSpinners[i] = new JSpinner(new SpinnerNumberModel(480+i*160, 5, 5000, 10));// value, min, max, step
             setSizeJSpinners[i].setSize(80,20);
             panelBounds.add(setSizeJSpinners[i]);
         }
@@ -113,7 +148,7 @@ public class CrearJFrames extends JFrame{
         setSizeJSpinners[1].setLocation(70,75);
 
         for(int i = 0 ; i < setLocationJSpinners.length ; i++){
-            setLocationJSpinners[i] = new JSpinner(new SpinnerNumberModel(500-i*250, 0, 5000, 10));// value, min, max, step
+            setLocationJSpinners[i] = new JSpinner(new SpinnerNumberModel(500-i*250, 5, 5000, 10));// value, min, max, step
             setLocationJSpinners[i].setSize(80,20);
             //setLocationJSpinners[i].setEnabled(false);
             panelBounds.add(setLocationJSpinners[i]);

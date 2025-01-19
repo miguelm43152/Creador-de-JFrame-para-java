@@ -36,7 +36,8 @@ public class App {
         crearJFrames.setSizeJSpinners[1].addChangeListener(new setSizeJSpinner());
         crearJFrames.setLocationJSpinners[0].addChangeListener(new setLocationJSpinner());
         crearJFrames.setLocationJSpinners[1].addChangeListener(new setLocationJSpinner());
-        crearJFrames.agregarBoton.addActionListener(new AgregarComponenteBoton());
+        crearJFrames.agregarBoton.addActionListener(new AgregarComponenteBoton(this));
+        MetodosConfiguracionBotones metodosConfiguracionBotones = new MetodosConfiguracionBotones(this);
 
         crearJFrames.centrarFrame.addActionListener(new ActionListener() {
             @Override
@@ -72,13 +73,6 @@ public class App {
 
         frameEditable.setLocation(posX,posY);
     }//fin de metodo moverFrame
-
-    public class AgregarComponenteBoton implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            frameEditable.agregarBoton();
-        }//fin de metodo actionPerformed
-    }//fin de clase AgregarComponenteBoton
 
     public class MoviendoFrame implements ComponentListener{
 

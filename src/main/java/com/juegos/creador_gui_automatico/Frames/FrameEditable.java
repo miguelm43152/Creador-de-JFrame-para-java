@@ -7,30 +7,31 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+
+import com.juegos.creador_gui_automatico.BotonEditable;
 
 import java.awt.event.*;
 
 public class FrameEditable extends JFrame{
     int altoFrame = 640;
     int anchoFrame = 480;
-    public ArrayList <JButton> listaBotones = new ArrayList<JButton>();
+    public ArrayList <BotonEditable> listaBotones = new ArrayList<BotonEditable>();
 
     public FrameEditable(){
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(this.anchoFrame,this.altoFrame);
         posicion();
-        setTitle("Hola mundo");
         setFocusable(false);
     }//fin del constructor
 
-    public void agregarBoton( ){
+    public BotonEditable agregarBoton( ){
 
         int indiceBotones;
-        JButton a = new JButton();
+        BotonEditable a = new BotonEditable();
         listaBotones.add( a );
         indiceBotones = listaBotones.size() - 1;
+        a.setNombre("varboton"+indiceBotones);
         a.setLocation(50 + indiceBotones*20, 50 + indiceBotones * 26);
         a.setSize(150,25);
         add( a );
@@ -40,6 +41,8 @@ public class FrameEditable extends JFrame{
         
         a.addKeyListener(new Teclado(a));
         a.addMouseMotionListener( new ArrastrarBoton(a));
+
+        return a;
 
     }//fin de metodo agregarBoton
 
