@@ -18,3 +18,6 @@ Este programa ayuda a crear una ventana con las dimensiones que se le especifiqu
 
 ## Resultado final
 ![Image](https://github.com/user-attachments/assets/25235ac1-4b77-40be-823a-e13c81458aef)
+
+## se puede consultar el codigo fuente de salida en este mismo repositorio
+![Image](https://github.com/user-attachments/assets/cd45ce03-5958-49e3-b31e-12808b5dfa33)
